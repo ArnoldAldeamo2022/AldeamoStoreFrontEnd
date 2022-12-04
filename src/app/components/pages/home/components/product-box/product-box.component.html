@@ -1,0 +1,23 @@
+<mat-card *ngIf="product" [ngClass]="{'text-center': !fullWidthMode}">
+  <div [ngClass]="{ flex: fullWidthMode }"><!--150px es el tamaño real que se da a la img se puede poner el tamño que se quiera con el h-[200 px] se da una altura personalizada a la img-->
+    <img class="mb-1 mx-auto h-[200px]"
+    [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
+    [src]="product.image"
+    />
+    <!--ahora junto a la img se agrega un div y en este se añade la información del producto con el w-full establecemos el ancho que sea al 200%-->
+    <div class="w-full" ngClass="{'px-8 flex flex-col justify-between': fullWidthMode}">
+      <div>
+        <h5>{{product.category}}</h5>
+        <p class="truncate hover:whitespace-normal">{{product.title}}</p>
+        <p *ngIf="fullWidthMode">{{product.description}}</p>
+      </div>
+      <!--DIV Para que me muestre el precio del producto y donde nos muestra como agregar el producto al carrito-->
+      <div class="flex justify-between">
+        <span class="text-red-400">{{ product.price | currency:"cop"}}</span>
+        <button (click)="onAddToCart()">
+          <mat-icon class="text-gray-500">shopping_cart</mat-icon> <!--con el text-gray-500 se hizo mas sutil el color de agregar el producto al carrito menos gris entre mas bajo mas transparente 500 esta OK-->
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

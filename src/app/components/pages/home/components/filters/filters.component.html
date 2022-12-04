@@ -1,0 +1,11 @@
+<!--Agrego el panel expansion ya que al dar clic se expande-->
+<mat-expansion-panel *ngIf="categories"> <!--con el ngIf mostraremos este panel solo si tenemos las categorias de lo contrario lo oculta-->
+  <mat-expansion-panel-header>
+    <mat-panel-title>CATEGORIES</mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-selection-list [multiple]="false"> <!--muestra los elementos en la lista, permitira seleccionar uno de los elementos de la lista, con el multiple false solo permite seleccionar uno-->
+    <mat-list-option *ngFor="let category of categories" [value]="category">
+      <button (click)="onShowCategory(category)">{{category}}</button>
+    </mat-list-option>
+  </mat-selection-list>
+</mat-expansion-panel>
