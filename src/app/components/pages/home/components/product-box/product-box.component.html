@@ -8,7 +8,7 @@
       </mat-card-header>
       <mat-card-content>
         <div class="product-body">
-          <h4 class="product-price">{{ product.price | currency:"cop"}} / <del class="product-old-price">{{ product.price*2 | currency:"cop"}}</del> </h4>
+          <h4 class="product-price">{{ product.price | currency:"cop"}} / <del class="product-old-price">{{ (product.price + (product.price *0.20)) | currency:"cop"}}</del> </h4>
           <p class="product-category">{{product.category}}</p>
           <p class="truncate hover:whitespace-normal">{{product.title}}</p>
           <p *ngIf="fullWidthMode">{{product.description}}</p>
