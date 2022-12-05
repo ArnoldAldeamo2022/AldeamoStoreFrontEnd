@@ -19,13 +19,6 @@
             (itemsCountChange)="onItemsCountChange($event)" (sortChange)="onSortChange($event)"></app-products-header>
           <!--Con este codigo paso un componente secundario de mosaico y los separa en columnas y filas el gutterSize es el margen entre los productos que sea de 16, el numero de columnas cambiara dinamicamente para cada boton despues del show 12 dependiendo del boton al que hacemos clic el primero sera el numero de columnas 1 por fila el boton de enmedio 3 por fila y el ultimo 4 por fila y para la altura de la fila uso rowHeight y como quiero que sea dinamicamente actualizado creo la variable rowHeight-->
 
-
-
-
-
-
-
-
           <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
             <mat-grid-tile *ngFor="let product of products">
 

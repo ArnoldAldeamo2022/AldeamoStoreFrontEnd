@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const STORE_BASE_URL = 'http://localhost:8080/aldeamostore/v1';
+const STORE_BASE_URL = 'http://34.27.54.139:8080/aldeamostore/v1';
 
 @Injectable({
   providedIn: 'root',
