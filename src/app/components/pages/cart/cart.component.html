@@ -18,7 +18,7 @@
     </ng-container>
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Precio</th>
-      <td mat-cell *matCellDef="let element">{{ element.price | currency:"cop" }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.price | currency:"$US " }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="quantity">
@@ -35,13 +35,13 @@
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="total">
-      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <th mat-header-cell *matHeaderCellDef>Total :</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.quantity * element.price | currency:"cop" }}
+        {{ element.quantity * element.price | currency:"$US " }}
       </td>
       <td mat-footer-cell *matFooterCellDef>
         <span class="font-bold py-5 block">{{
-          getTotal(cart.items) | currency:"cop"
+          getTotal(cart.items) | currency:"$US "
         }}</span>
       </td>
     </ng-container>

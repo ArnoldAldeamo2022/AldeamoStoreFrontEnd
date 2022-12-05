@@ -80,7 +80,7 @@
                     <!--Con esto separo doy separacion al texto de 1 Items de del nombre del producto-->
                     <div *ngFor="let item of cart.items" class="flex justify-between font-ligth mb-2">
                       {{item.name}} * {{item.quantity}}
-                      <span class="font-bold">{{ item.price | currency:'cop'}}</span>
+                      <span class="font-bold">{{ item.price | currency:'$US '}}</span>
                       <!--Se utiliza {{}} para angular expresión y aqui coloco el precio del ITEM el currency agrega la moneda local por defecto dolar yo agregue lps-->
                     </div>
                   </div>
@@ -89,7 +89,7 @@
                   <div class="flex justify-between py-3 font-light">
                     <!--Con esto separo el texto de total de la cajita de arriba que es donde termina el producto-->
                     Total:
-                    <span class="font-bold">{{ getTotal(cart.items) | currency: 'cop'}}</span>
+                    <span class="font-bold">{{ getTotal(cart.items) | currency: '$US '}}</span>
                   </div>
 
                   <!--con esto coloco el icono para remover productos del carrito-->

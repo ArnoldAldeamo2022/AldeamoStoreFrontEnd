@@ -24,7 +24,7 @@ app.post("/checkout", async (req, res, next) => {
                 type: 'fixed_amount',
                 fixed_amount: {
                     amount: 0,
-                    currency: 'usd',
+                    currency: 'USD',
                 },
                 display_name: 'Free shipping',
                 // Entrega entre 5 y 7 días laborables
@@ -44,8 +44,8 @@ app.post("/checkout", async (req, res, next) => {
                 shipping_rate_data: {
                 type: 'fixed_amount',
                 fixed_amount: {
-                    amount: 1500,
-                    currency: 'usd',
+                    amount: 1500000,
+                    currency: 'USD',
                 },
                 display_name: 'Next day air',
                 // Entrega en exactamente 1 día laborable
@@ -66,7 +66,7 @@ app.post("/checkout", async (req, res, next) => {
 
            line_items:  req.body.items.map((item) => ({
             price_data: {
-              currency: 'usd',
+              currency: 'USD',
               product_data: {
                 name: item.name,
                 images: [item.product]
