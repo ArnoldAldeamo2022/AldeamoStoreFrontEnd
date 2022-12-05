@@ -3,23 +3,26 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{
-  path: 'home',
-  component: HomeComponent
-},
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full', //esto me hace que por ejemplo en coloco localhost:4200 me redirige siempre a la pagina HOME
+  },
 
-{
-  path: 'cart',
-  component: CartComponent
-},
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
 
-{
-path: '', redirectTo: 'home', pathMatch: 'full' //esto me hace que por ejemplo en coloco localhost:4200 me redirige siempre a la pagina HOME
-}
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

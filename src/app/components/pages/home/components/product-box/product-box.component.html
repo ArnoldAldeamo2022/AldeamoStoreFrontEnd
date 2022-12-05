@@ -1,23 +1,23 @@
-<mat-card *ngIf="product" [ngClass]="{'text-center': !fullWidthMode}">
-  <div [ngClass]="{ flex: fullWidthMode }"><!--150px es el tamaño real que se da a la img se puede poner el tamño que se quiera con el h-[200 px] se da una altura personalizada a la img-->
-    <img class="mb-1 mx-auto h-[200px]"
-    [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
-    [src]="product.image"
-    />
-    <!--ahora junto a la img se agrega un div y en este se añade la información del producto con el w-full establecemos el ancho que sea al 200%-->
-    <div class="w-full" ngClass="{'px-8 flex flex-col justify-between': fullWidthMode}">
-      <div>
-        <h5>{{product.category}}</h5>
-        <p class="truncate hover:whitespace-normal">{{product.title}}</p>
-        <p *ngIf="fullWidthMode">{{product.description}}</p>
-      </div>
-      <!--DIV Para que me muestre el precio del producto y donde nos muestra como agregar el producto al carrito-->
-      <div class="flex justify-between">
-        <span class="text-red-400">{{ product.price | currency:"cop"}}</span>
-        <button (click)="onAddToCart()">
-          <mat-icon class="text-gray-500">shopping_cart</mat-icon> <!--con el text-gray-500 se hizo mas sutil el color de agregar el producto al carrito menos gris entre mas bajo mas transparente 500 esta OK-->
-        </button>
-      </div>
-    </div>
-  </div>
-</mat-card>
+<div class="product m-5" style="height: 350px;">
+  <mat-card *ngIf="product" [ngClass]="{'text-center': !fullWidthMode}" style="height:340px ;">
+      <mat-card-header style="display: inline-block;">
+        <div class="product-img">
+          <img class="d-block h-[100px]" [ngClass]="{ 'h-[100px]': !fullWidthMode, 'h-[260px]': fullWidthMode }"
+          [src]="product.image" />
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="product-body">
+          <h4 class="product-price">{{ product.price | currency:"cop"}} / <del class="product-old-price">{{ product.price*2 | currency:"cop"}}</del> </h4>
+          <p class="product-category">{{product.category}}</p>
+          <p class="truncate hover:whitespace-normal">{{product.title}}</p>
+          <p *ngIf="fullWidthMode">{{product.description}}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="add-to-cart">
+          <button (click)="onAddToCart()" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+        </div>
+      </mat-card-footer>
+  </mat-card>
+</div>

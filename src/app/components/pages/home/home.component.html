@@ -1,30 +1,46 @@
 <div class="w-100">
 
   <div class="container">
+    <div class="row d-flex justify-content-center">
+
+
+      <!-- class="min-h-full max-w-7x1 mx-auto border-x" -->
+
+      <mat-drawer-container [autosize]="true">
+        recalcula cuales son los valores y el ancho de los elementos en el contenedor y si carga algo dinaminamente lo
+        ajustara automaticamente otra vez. El h-full establece la altura media de la ventana, se agrega un ancho maximo
+        max-w- y el margin mx auto en el lado izquierdo y derecho horizontalmente para ser automatico
+        <mat-drawer mode="side" opened class="p-11">
+          <!--Con el modelo side que es lateral lo dejamos siempre abierto y coloco un padding de 6-->
+          <app-filters (showCategory)="onShowCategory($event)"></app-filters>
+        </mat-drawer>
+        <mat-drawer-content class="my-5 mx-6">
+          <app-products-header (columnsCountChange)="onColumnsCountChange($event)"
+            (itemsCountChange)="onItemsCountChange($event)" (sortChange)="onSortChange($event)"></app-products-header>
+          <!--Con este codigo paso un componente secundario de mosaico y los separa en columnas y filas el gutterSize es el margen entre los productos que sea de 16, el numero de columnas cambiara dinamicamente para cada boton despues del show 12 dependiendo del boton al que hacemos clic el primero sera el numero de columnas 1 por fila el boton de enmedio 3 por fila y el ultimo 4 por fila y para la altura de la fila uso rowHeight y como quiero que sea dinamicamente actualizado creo la variable rowHeight-->
+
+
+
+
+
+
+
+
+          <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
+            <mat-grid-tile *ngFor="let product of products">
+
+              <app-product-box [product]="product" (addToCart)="onAddToCart($event)" class="w-full"
+                [fullWidthMode]="cols ===1"></app-product-box>
+              <!--con el w-full cada que selecciono una columna y una fila se expande el contenido-->
+            </mat-grid-tile>
+
+
+          </mat-grid-list>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
     <!--Material de Angular me crea un cajon o una barra lateral que puede aparecer como pop-up o permanecer siempre-->
-    <mat-drawer-container [autosize]="true" class="min-h-full max-w-7x1 mx-auto border-x">
-      recalcula cuales son los valores y el ancho de los elementos en el contenedor y si carga algo dinaminamente lo
-      ajustara automaticamente otra vez. El h-full establece la altura media de la ventana, se agrega un ancho maximo
-      max-w- y el margin mx auto en el lado izquierdo y derecho horizontalmente para ser automatico
-      <mat-drawer mode="side" opened class="p-6">
-        <!--Con el modelo side que es lateral lo dejamos siempre abierto y coloco un padding de 6-->
-        <app-filters (showCategory)="onShowCategory($event)"></app-filters>
-      </mat-drawer>
-      <mat-drawer-content class="p-6">
-        <app-products-header (columnsCountChange)="onColumnsCountChange($event)"
-          (itemsCountChange)="onItemsCountChange($event)" (sortChange)="onSortChange($event)"></app-products-header>
-        <!--Con este codigo paso un componente secundario de mosaico y los separa en columnas y filas el gutterSize es el margen entre los productos que sea de 16, el numero de columnas cambiara dinamicamente para cada boton despues del show 12 dependiendo del boton al que hacemos clic el primero sera el numero de columnas 1 por fila el boton de enmedio 3 por fila y el ultimo 4 por fila y para la altura de la fila uso rowHeight y como quiero que sea dinamicamente actualizado creo la variable rowHeight-->
-        <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
-          <mat-grid-tile *ngFor="let product of products">
-            <app-product-box [product]="product" (addToCart)="onAddToCart($event)" class="w-full"
-              [fullWidthMode]="cols ===1"></app-product-box>
-            <!--con el w-full cada que selecciono una columna y una fila se expande el contenido-->
-          </mat-grid-tile>
 
-
-        </mat-grid-list>
-      </mat-drawer-content>
-    </mat-drawer-container>
   </div>
   <!-- HOT DEAL SECTION -->
   <div id="hot-deal" class="section w-75 px-5">
